@@ -38,3 +38,18 @@ with tab2:
             res = client.chat.completions.create(model="gpt-4o", messages=[{"role": "user", "content": prompt}])
             st.success("시장 분석 완료!")
             st.markdown(res.choices[0].message.content)
+import streamlit as st
+# ... 기존 라이브러리들 ...
+
+# 1. 접속 비밀번호 설정 (사이드바)
+with st.sidebar:
+    user_password = st.text_input("접속 암호를 입력하세요", type="password")
+
+# 2. 비밀번호가 맞을 때만 실행되도록 제한
+if user_password == "rlarjswls5%": # 김건진님만 아는 암호를 정하세요!
+    # --- 여기서부터 기존 분석 코드 ---
+    st.title("🏛️ 김건진의 AI 주식 비서")
+    # ... (기존 코드 생략) ...
+else:
+    st.warning("암호를 입력해야 분석 기능을 사용할 수 있습니다.")
+    st.stop() # 암호가 틀리면 여기서 멈춤
